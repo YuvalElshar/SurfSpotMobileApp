@@ -9,10 +9,13 @@ import SpotList from "./components/SpotList";
 import IconButton from "./components/UI/IconButton";
 import { Colors } from "./constants/colors";
 import Map from "./screens/Map";
+import SpotDetailes from "./screens/SpotDetails";
+import getSurfSpots from "./util/SurfSpotDataService";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  getSurfSpots();
   return (
     <>
       <StatusBar style="dark" />
@@ -25,8 +28,8 @@ export default function App() {
           }}
         >
           <Stack.Screen
-            name="AllSpots"
-            component={AllSpots}
+            name="Explore"
+            component={Map}
             options={({ navigation }) => ({
               title: "Explore",
               headerRight: ({ tintColor }) => (
@@ -41,7 +44,7 @@ export default function App() {
           />
 
           <Stack.Screen name="AddSpot" component={AddSpot} />
-          <Stack.Screen name="Map" component={Map} />
+          <Stack.Screen name="SpotDetails" component={SpotDetailes} />
         </Stack.Navigator>
       </NavigationContainer>
     </>

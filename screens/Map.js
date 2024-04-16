@@ -1,6 +1,6 @@
 import MapView, { Marker } from "react-native-maps";
 import { StyleSheet } from "react-native";
-import { useCallback, useLayoutEffect, useState } from "react";
+import { useCallback, useLayoutEffect, useState, useEffect } from "react";
 import IconButton from "../components/UI/IconButton";
 
 function Map({ navigation }) {
@@ -33,10 +33,19 @@ function Map({ navigation }) {
     navigation.setOptions({
       headerRight: ({ tintColor }) => (
         <IconButton
-          icon="save"
+          title="save"
+          icon="add-circle"
           size={24}
           color={tintColor}
           onPress={savePickedLocationHandler}
+        />
+      ),
+      headerLeft: ({ tintColor }) => (
+        <IconButton
+          icon="home"
+          size={24}
+          color={tintColor}
+          onPress={() => navigation.navigate("AddSpot")}
         />
       ),
     });
