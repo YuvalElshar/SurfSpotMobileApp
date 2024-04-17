@@ -2,8 +2,15 @@ import MapView, { Marker } from "react-native-maps";
 import { StyleSheet } from "react-native";
 import { useCallback, useLayoutEffect, useState, useEffect } from "react";
 import IconButton from "../components/UI/IconButton";
+import { httpGetAllSurfSpots } from "../util/https";
 
 function Map({ navigation }) {
+  useEffect(() => {
+    async function httpGetSurfSpots() {
+      await httpGetAllSurfSpots();
+    }
+    httpGetSurfSpots();
+  });
   const [selectedLocation, setSelectedLocation] = useState();
 
   const region = {

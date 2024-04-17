@@ -5,6 +5,13 @@ import LocationPicker from "./LocationPicker";
 
 function SpotForm() {
   const [spotTitle, setSpotTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [bestMonthsToSurf, setBestMonthsToSurf] = useState("");
+  const [bestTideToSurf, setBestTideToSurf] = useState("");
+  const [dangers, setDangers] = useState("");
+  const [waveLenght, setWaveLenght] = useState("");
+  const [waveDiraction, setWaveDiraction] = useState("");
+  const [rating, setRating] = useState("");
 
   function changeTitleHandler(enteredText) {
     setSpotTitle(enteredText);
