@@ -13,7 +13,7 @@ function OutlinedButton({ onPress, icon, children }) {
         style={styles.icon}
         name={icon}
         size={18}
-        color={Colors.primary500}
+        color={Colors.primary700}
       />
       <Text style={styles.text}>{children}</Text>
     </Pressable>
@@ -26,16 +26,16 @@ const styles = StyleSheet.create({
   button: {
     paddingHorizontal: 12,
     paddingVertical: 6,
-    margin: 4,
+    marginVertical: 12,
     justifyContent: "center",
     alignItems: "center",
     borderWidth: 1,
-    borderColor: Colors.primary500,
+    borderColor: Colors.primary700,
   },
   pressed: {
     opacity: 0.7,
   },
   text: {
-    color: Colors.primary500,
+    color: Colors.primary700,
   },
 });

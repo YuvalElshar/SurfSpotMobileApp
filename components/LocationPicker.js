@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Alert, View, StyleSheet, Image, Text } from "react-native";
-import OutlinedButton from "./UI/OutlinedButton";
+
 import { Colors } from "../constants/colors";
 import {
   useNavigation,
@@ -79,14 +79,7 @@ function locationPicker() {
   return (
     <View>
       <View style={styles.mapPreview}>{locationPreview}</View>
-      <View style={styles.actions}>
-        <OutlinedButton icon="location" onPress={getLocationHandler}>
-          Locate User
-        </OutlinedButton>
-        <OutlinedButton icon="map" onPress={pickOnMapHandler}>
-          Pick on Map
-        </OutlinedButton>
-      </View>
+      <View style={styles.actions}></View>
     </View>
   );
 }
@@ -95,14 +88,20 @@ export default locationPicker;
 
 const styles = StyleSheet.create({
   mapPreview: {
-    marginVertical: 8,
+    marginBottom: 5,
     width: "100%",
-    height: 150,
+    height: 100,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: Colors.primary100,
     borderRadius: 4,
-    overflow: "hidden",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 4,
+      height: 4,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 3.41,
   },
   actions: {
     flexDirection: "row",

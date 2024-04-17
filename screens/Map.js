@@ -60,6 +60,7 @@ function Map({ navigation }) {
 
   return (
     <MapView
+      mapType="hybridFlyover"
       style={styles.map}
       initialRegion={{ region }}
       onPress={SelectLocationHandler}
