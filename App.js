@@ -11,11 +11,13 @@ import IconButton from "./components/UI/IconButton";
 import { Colors } from "./constants/colors";
 import Map from "./screens/Map";
 import SpotDetailes from "./screens/SpotDetails";
+import { fetchSurfSpots } from "./util/https";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   console.log("App started");
+
   return (
     <>
       <StatusBar style="dark" />
