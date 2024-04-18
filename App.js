@@ -11,7 +11,7 @@ import IconButton from "./components/UI/IconButton";
 import { Colors } from "./constants/colors";
 import Map from "./screens/Map";
 import SpotDetailes from "./screens/SpotDetails";
-import { fetchSurfSpots } from "./util/https";
+import { fetchSurfSpots } from "./util/http";
 
 const Stack = createNativeStackNavigator();
 

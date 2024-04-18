@@ -7,7 +7,7 @@ import TextInputTitled from "./UI/TextInputTitled";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scrollview";
 import DropdownComponent from "./UI/DropdownComponent";
 import MultiSelectComponent from "./UI/MultiSelectComponent";
-import SurfSpotsComponent from "../util/https";
+import SurfSpotsComponent from "../util/http";
 
 function SpotForm() {
   const [spotTitle, setSpotTitle] = useState("");
@@ -26,7 +26,6 @@ function SpotForm() {
   return (
     <KeyboardAwareScrollView style={styles.form}>
       <LocationPicker />
-      <SurfSpotsComponent />
       <TextInputTitled
         label="Spot name*"
         value={spotTitle}

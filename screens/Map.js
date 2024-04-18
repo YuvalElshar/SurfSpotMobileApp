@@ -2,15 +2,29 @@ import MapView, { Marker } from "react-native-maps";
 import { StyleSheet } from "react-native";
 import { useCallback, useLayoutEffect, useState, useEffect } from "react";
 import IconButton from "../components/UI/IconButton";
-import { httpGetAllSurfSpots } from "../util/https";
+import axios from "axios";
+import { Ionicons } from "@expo/vector-icons";
 
 function Map({ navigation }) {
+  const BASE_URL = "http://10.0.0.25:5001/api/SurfSpots";
+  const [surfSpots, setSurfSpots] = useState([]);
+
   useEffect(() => {
-    async function httpGetSurfSpots() {
-      await httpGetAllSurfSpots();
-    }
-    httpGetSurfSpots();
-  });
+    console.log("Fetching surf spots on map...");
+    fetchSurfSpots();
+  }, []);
+
+  const fetchSurfSpots = async () => {
+    axios.get(BASE_URL).then((response) => {
+      const surfSpotsData = response.data;
+      setSurfSpots(surfSpotsData);
+      console.log(
+        surfSpotsData[0].name,
+        surfSpotsData[0].latitude,
+        surfSpotsData[0].longitude
+      );
+    });
+  };
   const [selectedLocation, setSelectedLocation] = useState();
 
   const region = {
@@ -60,11 +74,19 @@ function Map({ navigation }) {
 
   return (
     <MapView
-      mapType="hybridFlyover"
+      mapType="hybrid"
       style={styles.map}
       initialRegion={{ region }}
       onPress={SelectLocationHandler}
     >
+      {surfSpots.map((spot) => (
+        <Marker
+          key={spot.id}
+          coordinate={{ latitude: spot.latitude, longitude: spot.longitude }}
+          title={spot.name}
+          onPress={() => navigation.navigate("SpotDetails", { data: spot })}
+        />
+      ))}
       {selectedLocation && (
         <Marker
           coordinate={{
